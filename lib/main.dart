@@ -1,3 +1,4 @@
+import 'package:busha/app/app.snackbar.dart';
 import 'package:busha/utilities/context_util.dart';
 import 'package:flutter/material.dart';
 import 'package:busha/app/app.locator.dart';
@@ -7,6 +8,7 @@ import 'package:stacked_services/stacked_services.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await setupLocator();
+  setupSnackbarUi();
   runApp(const MainApp());
 }
 

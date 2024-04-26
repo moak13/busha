@@ -18,6 +18,7 @@ const String _newsDelayFuture = 'delayedNews';
 
 class ExploreViewModel extends MultipleFutureViewModel {
   final _navigationService = locator<NavigationService>();
+  final _snackbarService = locator<SnackbarService>();
   final _bitcoinService = locator<BitcoinService>();
   final _logger = getLogger('ExploreViewModel');
 
@@ -177,10 +178,16 @@ class ExploreViewModel extends MultipleFutureViewModel {
   void actionScan() {}
 
   void moveToTransactionsView({required AssetsDataModel asset}) {
-    if (asset.assetType == AssetType.bitcoin) {
-      _logger.i('gottenHash: $blockHash');
-      final assets = asset.copyWith(blockHash: blockHash);
-      _navigationService.navigateToTransactionsView(assets: assets);
+    if (asset.assetType != AssetType.bitcoin) {
+      _snackbarService.showSnackbar(
+        title: 'Info',
+        message:
+            'We currently can\'t fetch transactions for your ${asset.shortHand} asset',
+      );
+      return;
     }
+    _logger.i('gottenHash: $blockHash');
+    final assets = asset.copyWith(blockHash: blockHash);
+    _navigationService.navigateToTransactionsView(assets: assets);
   }
 }

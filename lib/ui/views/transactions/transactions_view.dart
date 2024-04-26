@@ -48,6 +48,7 @@ class TransactionsView extends StackedView<TransactionsViewModel> {
             return Center(
               child: Text(
                 viewModel.modelMessage ?? '',
+                textAlign: TextAlign.center,
                 style: const TextStyle(
                   fontWeight: FontWeight.w400,
                   fontSize: 16,

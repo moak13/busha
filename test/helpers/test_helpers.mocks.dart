@@ -6,6 +6,8 @@
 import 'dart:async' as _i5;
 import 'dart:ui' as _i6;
 
+import 'package:busha/data_models/block_transactions_data_model.dart' as _i11;
+import 'package:busha/data_models/latest_block_data_model.dart' as _i10;
 import 'package:busha/enums/http_verbs.dart' as _i8;
 import 'package:busha/services/bitcoin_service.dart' as _i9;
 import 'package:busha/services/dio_service.dart' as _i7;
@@ -102,7 +104,7 @@ class MockNavigationService extends _i1.Mock implements _i2.NavigationService {
     Duration? duration,
     bool? popGesture,
     int? id,
-    dynamic curve,
+    _i4.Curve? curve,
     bool? fullscreenDialog = false,
     bool? preventDuplicates = true,
     _i2.Transition? transitionClass,
@@ -138,7 +140,7 @@ class MockNavigationService extends _i1.Mock implements _i2.NavigationService {
     Duration? duration,
     bool? popGesture,
     int? id,
-    dynamic curve,
+    _i4.Curve? curve,
     bool? fullscreenDialog = false,
     bool? preventDuplicates = true,
     _i2.Transition? transitionClass,
@@ -237,7 +239,7 @@ class MockNavigationService extends _i1.Mock implements _i2.NavigationService {
     dynamic arguments,
     int? id,
     bool? opaque,
-    dynamic curve,
+    _i4.Curve? curve,
     Duration? duration,
     bool? fullscreenDialog = false,
     bool? popGesture,
@@ -704,4 +706,30 @@ class MockDioService extends _i1.Mock implements _i7.DioService {
 /// A class which mocks [BitcoinService].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockBitcoinService extends _i1.Mock implements _i9.BitcoinService {}
+class MockBitcoinService extends _i1.Mock implements _i9.BitcoinService {
+  @override
+  _i5.Future<_i10.LatestBlockDataModel?> fetchLatestBlock() =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #fetchLatestBlock,
+          [],
+        ),
+        returnValue: _i5.Future<_i10.LatestBlockDataModel?>.value(),
+        returnValueForMissingStub:
+            _i5.Future<_i10.LatestBlockDataModel?>.value(),
+      ) as _i5.Future<_i10.LatestBlockDataModel?>);
+
+  @override
+  _i5.Future<_i11.BlockTransactionsDataModel?> fetchBlockTransactions(
+          {required String? blockHash}) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #fetchBlockTransactions,
+          [],
+          {#blockHash: blockHash},
+        ),
+        returnValue: _i5.Future<_i11.BlockTransactionsDataModel?>.value(),
+        returnValueForMissingStub:
+            _i5.Future<_i11.BlockTransactionsDataModel?>.value(),
+      ) as _i5.Future<_i11.BlockTransactionsDataModel?>);
+}

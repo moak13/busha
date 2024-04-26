@@ -24,6 +24,15 @@ class AssetsSection extends ViewModelWidget<ExploreViewModel> {
           );
         }
 
+        if (viewModel.hasError) {
+          return SliverToBoxAdapter(
+            child: Padding(
+              padding: screenPadding,
+              child: Text(viewModel.errorMessage ?? ''),
+            ),
+          );
+        }
+
         return SliverList.separated(
           itemCount: viewModel.assetsList.length,
           itemBuilder: (context, index) {

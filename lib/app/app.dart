@@ -33,6 +33,7 @@ import 'package:busha/services/bitcoin_service.dart';
   ],
   dependencies: [
     LazySingleton(classType: NavigationService),
+    LazySingleton(classType: SnackbarService),
     LazySingleton(classType: DioService),
     LazySingleton(classType: BitcoinService),
 // @stacked-service

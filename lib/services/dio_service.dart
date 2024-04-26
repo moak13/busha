@@ -64,7 +64,7 @@ class DioService {
         );
         throw BushaException(
           message:
-              'Seems like we lost connection along the way. It\'s not you, it\'s us.',
+              'Opps, we lost connection there. Please check your network and try again.',
         );
       }
 
